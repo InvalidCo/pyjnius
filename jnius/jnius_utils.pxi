@@ -65,8 +65,8 @@ cdef void check_exception(JNIEnv *j_env) except *:
     if exc:
         # ExceptionDescribe always writes to stderr, preventing tidy exception
         # handling, so should only be for debugging
-        # j_env[0].ExceptionDescribe(j_env)
-        j_env[0].ExceptionClear(j_env)
+        j_env[0].ExceptionDescribe(j_env)
+        # j_env[0].ExceptionClear(j_env)
 
         cls_object = j_env[0].FindClass(j_env, "java/lang/Object")
         cls_throwable = j_env[0].FindClass(j_env, "java/lang/Throwable")
